@@ -4,4 +4,11 @@
     <string name="validate">Valider</string>
     <string name="loginInputLayout">Identifiant</string>
     <string name="passwordInputLayout">Mot de passe</string>
+    <string name="saveText">Sauvegarde</string>
+    <string name="lifeText">Cycle de vie</string>
+    <string name="permissionText">Permissions</string>
+    <string name="webservicesText">Web services</string>
+    <string name="helloText">Bonjour</string>
+
+
 </resources>
