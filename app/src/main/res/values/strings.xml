@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidToolBox</string>
+    <string name="connexion">Connexion</string>
 </resources>
