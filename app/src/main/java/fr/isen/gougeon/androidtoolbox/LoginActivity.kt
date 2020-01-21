@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity() {
 
     val goodIdentifier = "admin"
-    val goodPassword = "admin"
+    val goodPassword = "123"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
     fun doLogin() {
         if (canLog(loginInputLayout.text.toString(), passwordInputLayout.text.toString())){
             val intent = Intent (this, HomeActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             Toast.makeText(this, "Bonjour ${loginInputLayout.text}", Toast.LENGTH_LONG).show()
             startActivity(intent)
         }

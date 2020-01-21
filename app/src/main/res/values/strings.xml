@@ -10,6 +10,10 @@
     <string name="webservicesText">Web services</string>
     <string name="helloText">Bonjour</string>
     <string name="contentText"></string>
+    <string name="changeFragment">Changer de fragment</string>
+    <string name="lifeCycleFragmentContent">Test Fragment 1</string>
+    <string name="lifeCycleSecondFragmentContent">Test Fragment 2</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
