@@ -9,6 +9,7 @@
     <string name="permissionText">Permissions</string>
     <string name="webservicesText">Web services</string>
     <string name="helloText">Bonjour</string>
+    <string name="contentText"></string>
 
 
 </resources>

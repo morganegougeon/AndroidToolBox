@@ -24,7 +24,11 @@ class LoginActivity : AppCompatActivity() {
     fun doLogin() {
         if (canLog(loginInputLayout.text.toString(), passwordInputLayout.text.toString())){
             val intent = Intent (this, HomeActivity::class.java)
+            Toast.makeText(this, "Bonjour ${loginInputLayout.text}", Toast.LENGTH_LONG).show()
             startActivity(intent)
+        }
+        else{
+            Toast.makeText(this, "Login ou mot de passe incorrect", Toast.LENGTH_LONG).show()
         }
     }
 
