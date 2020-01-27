@@ -32,10 +32,7 @@ class HomeActivity : AppCompatActivity() {
     fun deconnexion() {
         val sharedPreferencesLogs : SharedPreferences?
         sharedPreferencesLogs = getSharedPreferences("identifiers", Context.MODE_PRIVATE)
-        sharedPreferencesLogs.edit().remove("password")
-        sharedPreferencesLogs.edit().remove("username")
-        sharedPreferencesLogs.edit().clear()
-        sharedPreferencesLogs.edit().commit()
+        sharedPreferencesLogs.edit().clear().apply()
 
         val intent = Intent (this, LoginActivity::class.java)
         startActivity(intent)
