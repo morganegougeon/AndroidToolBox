@@ -11,6 +11,9 @@
     <string name="webservicesText">Web services</string>
     <string name="helloText">Bonjour</string>
     <string name="contentText"></string>
+    <string name="nameInputText">Nom</string>
+    <string name="datePickerDialog">Date de naissance</string>
+    <string name="surnameInputText">Prenom</string>
     <string name="changeFragment">Changer de fragment</string>
     <string name="lifeCycleFragmentContent">Test Fragment 1</string>
     <string name="lifeCycleSecondFragmentContent">Test Fragment 2</string>

@@ -1,5 +1,6 @@
 package fr.isen.gougeon.androidtoolbox
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -20,8 +21,18 @@ class HomeActivity : AppCompatActivity() {
         deconnexionButton.setOnClickListener{
             deconnexion()
         }
+
+        saveButton.setOnClickListener {
+            openFormActivity()
+        }
     }
 
+    fun openFormActivity() {
+
+        val intent = Intent (this, FormActivity::class.java)
+        startActivity(intent)
+
+    }
     fun openLifeCycleActivity() {
 
         val intent = Intent (this, LifeCycleActivity::class.java)
