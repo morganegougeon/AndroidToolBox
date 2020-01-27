@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_form.*
+import org.json.JSONObject
 import java.io.BufferedWriter
 import java.io.File
 import java.io.FileWriter
@@ -21,6 +22,15 @@ class FormActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form)
 
+        showCalendar()
+
+        saveButton.setOnClickListener {
+
+            saveData()
+        }
+    }
+
+    fun showCalendar() {
         datePickerDialog.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus){
                 val mYear: Int
@@ -48,15 +58,17 @@ class FormActivity : AppCompatActivity() {
             }
 
         }
+    }
 
-        saveButton.setOnClickListener {
-
-            val file = File(cacheDir.absolutePath+"/data.txt")
-            file.writeText("${nameInputText.text}" + "|" + "${surnameInputText.text}" + "|" + "${datePickerDialog.text}")
-            Toast.makeText(this, "Enregistrement des données reussi " + "${surnameInputText.text}" + "!", Toast.LENGTH_LONG).show()
-
-        }
-
+    fun saveData()
+    {
+        val file = File(cacheDir.absolutePath+"/data.txt")
+        val json = JSONObject()
+        json.put("name", nameInputText.text)
+        json.put("surname", surnameInputText.text)
+        json.put("birthdate", datePickerDialog.text)
+        file.writeText(json.toString())
+        Toast.makeText(this, "Enregistrement des données reussi " + "${surnameInputText.text}" + "!", Toast.LENGTH_LONG).show()
 
     }
 
