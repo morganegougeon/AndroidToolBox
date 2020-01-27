@@ -11,6 +11,7 @@
     <string name="webservicesText">Web services</string>
     <string name="helloText">Bonjour</string>
     <string name="contentText"></string>
+    <string name="saveButton">Sauvegarder</string>
     <string name="nameInputText">Nom</string>
     <string name="datePickerDialog">Date de naissance</string>
     <string name="surnameInputText">Prenom</string>

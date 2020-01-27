@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nameInputText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nameInputText"
@@ -36,6 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/surnameInputText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/surnameInputText"
@@ -60,4 +62,23 @@
             android:hint="@string/datePickerDialog"
             tools:text="@string/datePickerDialog" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="#FF0000"
+        android:textColor="#FFFFFF"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateDialog"
+        tools:text="@string/saveButton"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
