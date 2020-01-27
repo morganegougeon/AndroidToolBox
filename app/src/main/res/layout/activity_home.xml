@@ -125,6 +125,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="64dp"
         android:background="#FF0000"
+        android:text="@string/deconnexionButton"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
