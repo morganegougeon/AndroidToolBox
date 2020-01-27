@@ -31,17 +31,15 @@ class FormActivity : AppCompatActivity() {
                 val datePickerDialog = DatePickerDialog(
                     this,
                     OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-                        datePickerDialog.setText(
-                            dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year
-                        )
+
+                        datePickerDialog.setText(String.format("%02d/%02d/%04d", dayOfMonth,(monthOfYear + 1), year))
+
                     }, mYear, mMonth, mDay
                 )
                 datePickerDialog.show()
 
             }
-            else {
 
-            }
         }
 
 
