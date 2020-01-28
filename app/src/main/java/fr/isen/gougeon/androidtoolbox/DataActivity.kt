@@ -60,4 +60,16 @@ class DataActivity : AppCompatActivity() {
         startActivityForResult(galleryIntent, GALLERY)
     }
     fun takePhotoFromCamera(){}
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(resultCode == Activity.RESULT_OK)
+        {
+            if(requestCode == GALLERY)
+            {
+                pictureButton.setImageURI(data?.data)
+            }
+        }
+    }
 }
