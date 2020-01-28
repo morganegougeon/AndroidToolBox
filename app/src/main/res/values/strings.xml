@@ -10,7 +10,9 @@
     <string name="permissionText">Permissions</string>
     <string name="webservicesText">Web services</string>
     <string name="helloText">Bonjour</string>
+    <string name="dataText">Acces aux informations Android</string>
     <string name="contentText"></string>
+    <string name="pictureButton"></string>
     <string name="saveButton">Sauvegarder</string>
     <string name="nameInputText">Nom</string>
     <string name="datePickerDialog">Date de naissance</string>

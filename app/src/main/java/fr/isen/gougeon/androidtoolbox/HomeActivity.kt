@@ -25,6 +25,10 @@ class HomeActivity : AppCompatActivity() {
         saveButton.setOnClickListener {
             openFormActivity()
         }
+
+        permissionButton.setOnClickListener {
+            openDataActivity()
+        }
     }
 
     fun openFormActivity() {
@@ -36,6 +40,13 @@ class HomeActivity : AppCompatActivity() {
     fun openLifeCycleActivity() {
 
         val intent = Intent (this, LifeCycleActivity::class.java)
+        startActivity(intent)
+
+    }
+
+    fun openDataActivity() {
+
+        val intent = Intent (this, DataActivity::class.java)
         startActivity(intent)
 
     }
