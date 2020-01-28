@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_data.*
 
 
@@ -40,8 +42,8 @@ class DataActivity : AppCompatActivity() {
         val pictureDialogBuilder = AlertDialog.Builder(this)
 
         pictureDialogBuilder.setNegativeButton("Fermer", DialogInterface.OnClickListener { dialog, id ->
-                dialog.cancel()
-            })
+            dialog.cancel()
+        })
 
         val pictureDialogItems = arrayOf("Selectionner une photo depuis la gallerie", "Prendre une photo depuis la camera")
         pictureDialogBuilder.setItems(pictureDialogItems
@@ -130,4 +132,27 @@ class DataActivity : AppCompatActivity() {
         startActivityForResult(cameraIntent, CAMERA)
 
     }
+
+    fun requestPermission(permission: String, requestCode: Int, handler: () -> Unit)
+    {
+
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    permission
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
+                    Toast.makeText(
+                        this,
+                        "Merci d'accepter les permissions dans vos parametres",
+                        Toast.LENGTH_LONG
+                    ).show()
+                } else {
+                    ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+                }
+            } else {
+                handler()
+            }
+        }
+
 }
