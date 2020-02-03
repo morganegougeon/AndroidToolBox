@@ -1,6 +1,7 @@
 package fr.isen.gougeon.androidtoolbox
 
 import android.app.DownloadManager
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +16,7 @@ import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_web_services.*
 
 
-class WebServicesActivity : AppCompatActivity() {
+class WebServicesActivity : AppCompatActivity(), RandomContactAdapter.OnItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +46,7 @@ class WebServicesActivity : AppCompatActivity() {
                     Toast.makeText(this, "${it[0].email}", Toast.LENGTH_LONG).show()
                 }
                 randomContactRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-                randomContactRecyclerView.adapter = result.results?.let { RandomContactAdapter(it) }
+                randomContactRecyclerView.adapter = result.results?.let { RandomContactAdapter(it, this) }
 
 
             },
@@ -56,5 +57,11 @@ class WebServicesActivity : AppCompatActivity() {
         queue.add(stringRequest)
 
 
+    }
+
+    override fun onItemClicked(contact: RandomContactModel?) {
+        Log.d("string", "coucouc le test")
+        val intent = Intent (this, HomeActivity::class.java)
+        startActivity(intent)
     }
 }
