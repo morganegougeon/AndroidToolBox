@@ -11,10 +11,16 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.provider.MediaStore
+import android.widget.Adapter
+import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_data.*
 
 
@@ -25,11 +31,15 @@ class DataActivity : AppCompatActivity() {
     val PERMISSION_CODE = 1000
     val IMAGE_CAPTURE_CODE = 1001
     var image_uri: Uri? = null
+    private lateinit var linearLayoutManager: LinearLayoutManager
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_data)
+
 
         pictureButton.setOnClickListener() {
             showPictureDialog()
@@ -136,23 +146,38 @@ class DataActivity : AppCompatActivity() {
     fun requestPermission(permission: String, requestCode: Int, handler: () -> Unit)
     {
 
-            if (ContextCompat.checkSelfPermission(
+        if (ContextCompat.checkSelfPermission(
+                this,
+                permission
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
+                Toast.makeText(
                     this,
-                    permission
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
-                    Toast.makeText(
-                        this,
-                        "Merci d'accepter les permissions dans vos parametres",
-                        Toast.LENGTH_LONG
-                    ).show()
-                } else {
-                    ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
-                }
+                    "Merci d'accepter les permissions dans vos parametres",
+                    Toast.LENGTH_LONG
+                ).show()
             } else {
-                handler()
+                ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
             }
+        } else {
+            handler()
         }
+    }
+
+    fun readContacts(){
+        val contactList = ArrayList<ContactModel>()
+        val contacts = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null)
+        while(contacts?.moveToNext() ?: false)
+        {
+            val displayName = contacts?.getString(contacts.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_PRIMARY))
+            val contactModel = ContactModel()
+            contactModel.displayName = displayName.toString()
+            contactList.add(contactModel)
+        }
+        contactRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        contactRecyclerView.adapter = ContactsAdapter(contactList)
+
+    }
 
 }
