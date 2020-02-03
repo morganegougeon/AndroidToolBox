@@ -39,6 +39,8 @@ class DataActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_data)
+        requestPermission(android.Manifest.permission.READ_CONTACTS, PERMISSION_CODE){readContacts()}
+
 
 
         pictureButton.setOnClickListener() {
@@ -167,7 +169,7 @@ class DataActivity : AppCompatActivity() {
 
     fun readContacts(){
         val contactList = ArrayList<ContactModel>()
-        val contacts = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null)
+        val contacts = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null)
         while(contacts?.moveToNext() ?: false)
         {
             val displayName = contacts?.getString(contacts.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_PRIMARY))
