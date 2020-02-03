@@ -29,6 +29,10 @@ class HomeActivity : AppCompatActivity() {
         permissionButton.setOnClickListener {
             openDataActivity()
         }
+
+        webservicesButton.setOnClickListener(){
+            openWebServicesActivity()
+        }
     }
 
     fun openFormActivity() {
@@ -57,6 +61,11 @@ class HomeActivity : AppCompatActivity() {
         sharedPreferencesLogs.edit().clear().apply()
 
         val intent = Intent (this, LoginActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun openWebServicesActivity(){
+        val intent = Intent (this, WebServicesActivity::class.java)
         startActivity(intent)
     }
 }
