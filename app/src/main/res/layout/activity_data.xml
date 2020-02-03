@@ -43,4 +43,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pictureButton" />
 
+    <TextView
+        android:id="@+id/latitudeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/latitudeTextView"
+        app:layout_constraintStart_toEndOf="@+id/pictureButton"
+        app:layout_constraintTop_toTopOf="@+id/pictureButton"
+        tools:text="@string/latitudeTextView" />
+
+    <TextView
+        android:id="@+id/longitudeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="@string/longitudeTextView"
+        app:layout_constraintBottom_toBottomOf="@+id/pictureButton"
+        app:layout_constraintStart_toEndOf="@+id/pictureButton"
+        app:layout_constraintTop_toBottomOf="@+id/latitudeTextView"
+        tools:text="@string/longitudeTextView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
