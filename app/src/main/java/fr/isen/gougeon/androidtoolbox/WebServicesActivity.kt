@@ -43,7 +43,6 @@ class WebServicesActivity : AppCompatActivity(), RandomContactAdapter.OnItemClic
                 val result = gson.fromJson(response, RandomContact::class.java)
                 result.results?.let{
                     Log.d("volley", it[0].email.toString())
-                    Toast.makeText(this, "${it[0].email}", Toast.LENGTH_LONG).show()
                 }
                 randomContactRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
                 randomContactRecyclerView.adapter = result.results?.let { RandomContactAdapter(it, this) }
@@ -60,7 +59,6 @@ class WebServicesActivity : AppCompatActivity(), RandomContactAdapter.OnItemClic
     }
 
     override fun onItemClicked(contact: RandomContactModel?) {
-        Log.d("string", "coucouc le test")
         val intent = Intent (this, HomeActivity::class.java)
         startActivity(intent)
     }

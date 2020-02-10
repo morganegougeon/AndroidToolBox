@@ -178,7 +178,7 @@ class DataActivity : AppCompatActivity(), LocationListener {
         {
             val displayName = contacts?.getString(contacts.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME_PRIMARY))
             val contactModel = ContactModel()
-            contactModel.displayName = displayName.toString()
+            contactModel.displayName = "Nom : " + displayName.toString()
             contactList.add(contactModel)
         }
         contactRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

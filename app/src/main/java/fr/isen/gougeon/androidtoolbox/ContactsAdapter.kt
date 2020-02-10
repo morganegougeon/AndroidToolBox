@@ -13,6 +13,7 @@ class ContactsAdapter(val contacts: ArrayList<ContactModel>): RecyclerView.Adapt
     class ContactViewHolder(val view: View):  RecyclerView.ViewHolder(view) {
         fun bind(contact: String?){
             view.displayNameTextView.text = contact
+            view.mail_text_view.text = ""
         }
     }
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recycler_view_contact_cell.view.*
 import kotlinx.android.synthetic.main.activity_web_services.*
 
@@ -16,8 +17,11 @@ class RandomContactAdapter(val contacts: ArrayList<RandomContactModel>, val list
 
 
     class RandomContactViewHolder(val view: View):  RecyclerView.ViewHolder(view) {
-        fun bind(contact: String?){
+        fun bind(contact: String?, mail : String?, img_url: String?){
             view.displayNameTextView.text = contact
+            view.mail_text_view.text = mail
+            Picasso.get().load(img_url).into(view.contact_image_view)
+
         }
 
     }
@@ -39,7 +43,8 @@ class RandomContactAdapter(val contacts: ArrayList<RandomContactModel>, val list
 
     override fun onBindViewHolder(holder: RandomContactViewHolder, position: Int) {
         val contact = contacts[position]
-        holder.bind(contact.name?.first.toString() + " " + contact.name?.last.toString() + ": " + contact.email.toString())
+        holder.bind(contact.name?.first.toString() + " " + contact.name?.last.toString(), contact.email.toString(), contact.picture?.large)
+
     }
 
 
